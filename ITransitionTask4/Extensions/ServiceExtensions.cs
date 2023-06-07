@@ -23,10 +23,13 @@ namespace ITransitionTask4.Extensions
                 .AllowAnyHeader()
                 .AllowCredentials());
             });
-
+        //, options => options.EnableRetryOnFailure(
+        //maxRetryCount: 10,
+        //                maxRetryDelay: TimeSpan.FromSeconds(30),
+        //                errorNumbersToAdd: null)
         public static void ConfigureSqlContext(this IServiceCollection services, IConfiguration configuration) =>
             services.AddDbContext<RepositoryContext>(opts =>
-                opts.UseSqlServer(configuration.GetConnectionString("sqlConnection")));
+                opts.UseSqlServer(configuration.GetConnectionString("dockerConnection")));
 
         public static void ConfigureRepositoryManager(this IServiceCollection services) =>
            services.AddScoped<IRepositoryManager, RepositoryManager>();

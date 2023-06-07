@@ -71,7 +71,7 @@ app.UseAuthorization();
 
 app.MapControllers();
 
-app.UseMiddleware<UserStatusMiddleware>();
-//app.UseUserStatusMiddleware();
+//app.UseMiddleware<UserStatusMiddleware>();
+app.UseUserStatusMiddleware();
 
 app.Run();

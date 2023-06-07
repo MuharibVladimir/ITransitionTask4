@@ -8,12 +8,10 @@ namespace ITransitionTask4.Middlewares
 {
     public class UserStatusMiddleware: IMiddleware
     {
-        //private readonly RequestDelegate _next;
         private readonly UserManager<User> _userManager;
 
         public UserStatusMiddleware(UserManager<User> userManager)
         {
-            //_next = next;
             _userManager = userManager;
         }
 

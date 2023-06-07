@@ -9,7 +9,7 @@ namespace ITransitionTask4.Repositories
     {
         public RepositoryContext(DbContextOptions options) : base(options)
         {
-
+            Database.EnsureCreated();
         }
     }
 }

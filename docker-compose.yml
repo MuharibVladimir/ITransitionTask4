@@ -1,0 +1,31 @@
+version: '3.4'
+
+services:
+
+  db: 
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports: 
+      - 8003:1443
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=Tiger159753
+      - MSSQL_AGENT_ENABLED=true
+  itransitiontask4:
+    image: ${DOCKER_REGISTRY-}itransitiontask4
+    build: 
+      context: .
+      dockerfile: ITransitionTask4/Dockerfile
+    ports:
+      - 8001:80
+      - 8002:443
+    environment:
+      - SECRET=ArgentinaSecretCastle
+    depends_on:
+      - db
+  front:
+    build: 
+     context: .
+     dockerfile: my-app/Dockerfile
+    ports:
+      - 3000:3000
+
